@@ -4,6 +4,7 @@ import AuthLayout from './layouts/AuthLayout.jsx'
 import DashLayout from './layouts/DasboardLayout.jsx'
 import Login from './pages/user/login/Login.jsx'
 import Register from './pages/user/register/Register.jsx'
+import { ToastContainer } from'react-toastify'
 export default function App() {
   const router= createBrowserRouter(
     [
@@ -26,6 +27,7 @@ export default function App() {
   )
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={router}/>
     </>
   )
