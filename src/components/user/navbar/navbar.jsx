@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function CustomNavbar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className=" sticky-top bg-body-tertiary">
       <Container>
         <Navbar.Brand >T-Shop</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
