@@ -1,9 +1,11 @@
 import React from 'react'
-
+import CustomNavbar from '../components/user/navbar/navbar'
+import { Outlet } from 'react-router-dom'
 export default function UserLayout() {
   return (
-    <div>
-      
-    </div>
+    <>
+    <CustomNavbar/>
+    <Outlet />
+    </>
   )
 }
