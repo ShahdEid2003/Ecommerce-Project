@@ -21,8 +21,11 @@ export default function CustomNavbar() {
             <Nav.Link as={Link} to={"category"}>
               category
             </Nav.Link>
+            <Nav.Link as={Link} to={"cart"}>
+              Cart
+            </Nav.Link>
             <Dropdown as={NavItem}>
-              <Dropdown.Toggle as={NavLink}>login</Dropdown.Toggle>
+              <Dropdown.Toggle as={NavLink}><i class="fa-solid fa-user"></i></Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item as={Link} to={"auth/register"}>
                   sign up

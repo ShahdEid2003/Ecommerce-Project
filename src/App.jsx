@@ -11,6 +11,7 @@ import Home from './pages/user/home/Home.jsx'
 import Products from './pages/user/products/Products.jsx'
 import CategoryProducts from './pages/user/products/CategoryProduct.jsx'
 import ProductDetails from './pages/user/products/ProductDetails.jsx'
+import Cart from './pages/user/cart/Cart.jsx'
 export default function App() {
   const router= createBrowserRouter(
     [
@@ -28,11 +29,12 @@ export default function App() {
         path: '/',
         element: <UserLayout />,
         children: [
-          { path: '/home', element: <Home /> },
-          { path: '/product', element: <Products /> },
-          { path: '/category', element: <Categories /> },
-          { path:'/categories/:categoryId', element: <CategoryProducts /> },
-          { path:'/product/:productId', element: <ProductDetails /> },
+          { path: 'home', element: <Home /> },
+          { path: 'product', element: <Products /> },
+          { path: 'category', element: <Categories /> },
+          { path:'categories/:categoryId', element: <CategoryProducts /> },
+          { path:'product/:productId', element: <ProductDetails /> },
+          { path:'cart', element: <Cart /> },
         ],
       
       },
