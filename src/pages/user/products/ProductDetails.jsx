@@ -3,11 +3,14 @@ import UseFetch from "../../../assets/hooks/useFetch";
 import Loader from "../../../components/loader/loader";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Slide, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import { CartContext } from "../../../components/user/context/CartContext";
+import { useContext } from "react";
 import axios from "axios";
 export default function ProductDetails() {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const {cartCount,setCartCount}=useContext(CartContext);
   const { data, error, isLoading } = UseFetch(
     `https://ecommerce-node4.onrender.com/products/${productId}`
   );
@@ -37,6 +40,7 @@ export default function ProductDetails() {
           pauseOnHover: true,
         });
         navigate('/cart');
+        setCartCount(cartCount + 1);
       }
     } catch (error) {
       toast.error("Failed to add product to cart", {
@@ -48,6 +52,7 @@ export default function ProductDetails() {
       });
       console.log(error);
     }
+     
   };
 
   return (

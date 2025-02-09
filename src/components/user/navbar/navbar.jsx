@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,8 +6,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import NavItem from 'react-bootstrap/NavItem';
 import NavLink from 'react-bootstrap/NavLink'
 import { Link } from "react-router-dom";
+import { CartContext } from "../../../components/user/context/CartContext";
 
 export default function CustomNavbar() {
+  const {cartCount}=useContext(CartContext);
   return (
     <Navbar expand="lg" className=" sticky-top bg-body-tertiary">
       <Container>
@@ -22,7 +24,7 @@ export default function CustomNavbar() {
               category
             </Nav.Link>
             <Nav.Link as={Link} to={"cart"}>
-              Cart
+              Cart {cartCount}
             </Nav.Link>
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={NavLink}><i class="fa-solid fa-user"></i></Dropdown.Toggle>
