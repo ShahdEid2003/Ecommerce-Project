@@ -8,8 +8,11 @@ import NavLink from 'react-bootstrap/NavLink'
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
 
+import { UserContext } from "../../../components/user/context/UserContext";
+
 export default function CustomNavbar() {
   const {cartCount}=useContext(CartContext);
+  const {user,loading}=useContext(UserContext);
   return (
     <Navbar expand="lg" className=" sticky-top bg-body-tertiary">
       <Container>
@@ -28,6 +31,9 @@ export default function CustomNavbar() {
             </Nav.Link>
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={NavLink}><i class="fa-solid fa-user"></i></Dropdown.Toggle>
+                <Dropdown.Item as={Link} to={"profile"}>
+                  Welcome {loading ? "...": user.userName}
+                </Dropdown.Item>
               <Dropdown.Menu>
                 <Dropdown.Item as={Link} to={"auth/register"}>
                   sign up
