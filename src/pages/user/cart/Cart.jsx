@@ -47,6 +47,14 @@ export default function Cart() {
         }
       }
     );
+    setCart(prevCart=>{
+      return prevCart.map(item=>{
+        if(item.productId===productId){
+          return {...item, quantity:item.quantity+1}
+        }
+        return item;
+      })
+    })
     console.log(response);
   };
   const decreasQty = async (productId) => {
@@ -62,6 +70,14 @@ export default function Cart() {
         }
       }
     );
+    setCart(prevCart=>{
+      return prevCart.map(item=>{
+        if(item.productId===productId){
+          return {...item, quantity:item.quantity-1}
+        }
+        return item;
+      })
+    })
     console.log(response);
   };
   return (

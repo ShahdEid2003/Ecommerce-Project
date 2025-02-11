@@ -5,14 +5,21 @@ import Navbar from "react-bootstrap/Navbar";
 import Dropdown from 'react-bootstrap/Dropdown';
 import NavItem from 'react-bootstrap/NavItem';
 import NavLink from 'react-bootstrap/NavLink'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
-
 import { UserContext } from "../../../components/user/context/UserContext";
 
 export default function CustomNavbar() {
   const {cartCount}=useContext(CartContext);
-  const {user,loading}=useContext(UserContext);
+  const {user,loading,setUser}=useContext(UserContext);
+  const navigate=useNavigate();
+  const logout = () => {
+    localStorage.removeItem("userToken");
+    setUser(null);
+    navigate("/auth/login");
+    
+  };
+
   return (
     <Navbar expand="lg" className=" sticky-top bg-body-tertiary">
       <Container>
@@ -41,6 +48,9 @@ export default function CustomNavbar() {
 
                 <Dropdown.Item as={Link} to={"auth/login"}>
                   login
+                </Dropdown.Item>
+                <Dropdown.Item onClick={logout}>
+                  logout
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

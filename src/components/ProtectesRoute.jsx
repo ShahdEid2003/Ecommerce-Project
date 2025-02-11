@@ -5,7 +5,7 @@ export default function ProtectesRoute({children}) {
     const token =localStorage.getItem("userToken");
     
     if (!token) {
-        return <Navigate to="/auth/logins" />
+        return <Navigate to="/auth/login" />
     }
   return children;
 }
