@@ -20,6 +20,7 @@ import Info from "./pages/user/profile/Info.jsx";
 import UserContextProvider from "./components/user/context/UserContext.jsx";
 import AuthProtectedRoute from "./components/AuthProtectedRoute.jsx"
 import Image from "./pages/user/profile/Image.jsx";
+import ForgotPassword from "./pages/user/forgotPassword/ForgotPassword.jsx";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -32,6 +33,8 @@ export default function App() {
       children: [
         { path: "register", element: <Register /> },
         { path: "login", element: <Login /> },
+        { path: "forgot", element: <ForgotPassword /> },
+       
       ],
     },
     {
@@ -54,6 +57,7 @@ export default function App() {
         { path: "categories/:categoryId", element: <CategoryProducts /> },
         { path: "product/:productId", element: <ProductDetails /> },
         { path: "cart", element: <Cart /> },
+        
         {
           path: "profile",
           element: <Profile />,

@@ -1,9 +1,10 @@
 import React from "react";
-import { Form, Button, FloatingLabel, Container, Card } from 'react-bootstrap';
+import { Form, Button, FloatingLabel, Container, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./login.css";
 
 export default function Login() {
@@ -26,7 +27,7 @@ export default function Login() {
       );
       if (response.status == 200) {
         localStorage.setItem("userToken", response.data.token);
-        navigate('/');
+        navigate("/");
       }
     } catch (error) {
       setServerError(error.response.data.message);
@@ -35,7 +36,7 @@ export default function Login() {
     }
   };
   return (
-<Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container className="d-flex justify-content-center align-items-center vh-100">
       <Form onSubmit={handleSubmit(registerUser)} className="form-container">
         <Card className="p-20 shadow">
           <h2 className="text-center mb-4">Login</h2>
@@ -51,7 +52,9 @@ export default function Login() {
               placeholder="name@example.com"
               {...register("email", { required: "Email is required" })}
             />
-            {errors.email && <div className="text-danger">{errors.email.message}</div>}
+            {errors.email && (
+              <div className="text-danger">{errors.email.message}</div>
+            )}
           </FloatingLabel>
 
           <FloatingLabel
@@ -64,11 +67,24 @@ export default function Login() {
               placeholder="Password"
               {...register("password", { required: "Password is required" })}
             />
-            {errors.password && <div className="text-danger">{errors.password.message}</div>}
+            {errors.password && (
+              <div className="text-danger">{errors.password.message}</div>
+            )}
           </FloatingLabel>
 
-          <Button type="submit" variant="primary" className="w-50" disabled={isLoading}>
-            {isLoading ? '...Loading' : 'Login'}
+          <Button
+            type="submit"
+            variant="primary"
+            className="w-50"
+            disabled={isLoading}
+          >
+            {isLoading ? "...Loading" : "Login"}
+          </Button>
+          <Button as={Link} to={"/auth/register"}>
+            sign up
+          </Button>
+          <Button as={Link} to={"/auth/forgot"}>
+            Forgot Password?
           </Button>
         </Card>
       </Form>

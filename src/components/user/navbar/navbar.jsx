@@ -2,22 +2,21 @@ import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from 'react-bootstrap/Dropdown';
-import NavItem from 'react-bootstrap/NavItem';
-import NavLink from 'react-bootstrap/NavLink'
+import Dropdown from "react-bootstrap/Dropdown";
+import NavItem from "react-bootstrap/NavItem";
+import NavLink from "react-bootstrap/NavLink";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { UserContext } from "../../../components/user/context/UserContext";
 
 export default function CustomNavbar() {
-  const {cartCount}=useContext(CartContext);
-  const {user,loading,setUser}=useContext(UserContext);
-  const navigate=useNavigate();
+  const { cartCount } = useContext(CartContext);
+  const { user, loading, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("userToken");
     setUser(null);
     navigate("/auth/login");
-    
   };
 
   return (
@@ -37,21 +36,16 @@ export default function CustomNavbar() {
               Cart {cartCount}
             </Nav.Link>
             <Dropdown as={NavItem}>
-              <Dropdown.Toggle as={NavLink}><i class="fa-solid fa-user"></i></Dropdown.Toggle>
-                <Dropdown.Item as={Link} to={"profile"}>
-                  Welcome {loading ? "...": user.userName}
-                </Dropdown.Item>
+              <Dropdown.Toggle as={NavLink}>
+                <i class="fa-solid fa-user"></i>
+              </Dropdown.Toggle>
+
               <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={"auth/register"}>
-                  sign up
+                <Dropdown.Item as={Link} to={"profile"}>
+                  Welcome {loading ? "..." : user.userName}
                 </Dropdown.Item>
 
-                <Dropdown.Item as={Link} to={"auth/login"}>
-                  login
-                </Dropdown.Item>
-                <Dropdown.Item onClick={logout}>
-                  logout
-                </Dropdown.Item>
+                <Dropdown.Item onClick={logout}>logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
