@@ -1,15 +1,19 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Form, FloatingLabel, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 import Loader from "../../../components/loader/loader";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../../components/user/context/CartContext";
 
 import axios from "axios";
 export default function CreateOrder() {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState(null);
+  const { setCartCount } = useContext(CartContext);
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,12 +22,19 @@ export default function CreateOrder() {
   const handleSubmitOrder = async (value) => {
     setIsLoading(true);
     try {
-      const res = await axios.post(`http://localhost:3000/order`, value, {
-        headers: {
-          Authorization: `Tariq__${localStorage.getItem("userToken")}`,
-        },
-      });
-      toast.success("Order created successfully!");
+      const res = await axios.post(
+        `https://ecommerce-node4.onrender.com/order`,
+        value,
+        {
+          headers: {
+            Authorization: `Tariq__${localStorage.getItem("userToken")}`,
+          },
+        }
+      );
+      setCart([]);
+      setCartCount(0);
+      toast.success("Order created successfully.");
+      navigate("/profile/order");
     } catch (error) {
       toast.error("Failed to create order. Please try again later.");
       setServerError("Failed to create order. Please try again later.");
@@ -44,9 +55,7 @@ export default function CreateOrder() {
         }
       );
       setCart(data.products);
-      setError(null);
     } catch (err) {
-      setError(err.message);
     } finally {
       setIsLoading(false);
     }
@@ -60,7 +69,6 @@ export default function CreateOrder() {
 
   return (
     <>
-    
       {serverError && <div className="text-danger">{serverError}</div>}
       <div className="d-flex gap-3 mb-3">
         {cart.map((item) => (

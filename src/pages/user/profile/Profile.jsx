@@ -10,7 +10,7 @@ export default function Profile() {
         <Col md={3}>
           <SideBarProfile />
         </Col>
-        <Col md={8}>
+        <Col md={9}>
           <Outlet />
         </Col>
       </Row>
