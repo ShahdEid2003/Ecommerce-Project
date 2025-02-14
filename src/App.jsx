@@ -21,6 +21,7 @@ import UserContextProvider from "./components/user/context/UserContext.jsx";
 import AuthProtectedRoute from "./components/AuthProtectedRoute.jsx"
 import Image from "./pages/user/profile/Image.jsx";
 import ForgotPassword from "./pages/user/forgotPassword/ForgotPassword.jsx";
+import CreateOrder from "./pages/user/createOrder/CreateOrder.jsx";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -57,7 +58,7 @@ export default function App() {
         { path: "categories/:categoryId", element: <CategoryProducts /> },
         { path: "product/:productId", element: <ProductDetails /> },
         { path: "cart", element: <Cart /> },
-        
+        { path: "create-order", element: <CreateOrder /> },
         {
           path: "profile",
           element: <Profile />,

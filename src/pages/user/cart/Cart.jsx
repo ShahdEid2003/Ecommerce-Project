@@ -5,7 +5,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { CartContext } from "../../../components/user/context/CartContext";
-
+import { Link } from "react-router-dom";
 export default function Cart() {
   const { cartCount, setCartCount } = useContext(CartContext);
   const [cart, setCart] = useState(null);
@@ -161,9 +161,14 @@ export default function Cart() {
           ))}
         </tbody>
       </Table>
-      <Button variant="danger" onClick={clearCart} className="mt-3">
+      <Button variant="danger" onClick={clearCart} className="m-3">
         Clear Cart
       </Button>
+      <Button as={Link} to={"/create-order"}  className="m-3">
+        Create Order
+      </Button>
+      
+
     </section>
   );
 }
