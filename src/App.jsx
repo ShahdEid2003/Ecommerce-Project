@@ -22,6 +22,8 @@ import AuthProtectedRoute from "./components/AuthProtectedRoute.jsx"
 import Image from "./pages/user/profile/Image.jsx";
 import ForgotPassword from "./pages/user/forgotPassword/ForgotPassword.jsx";
 import CreateOrder from "./pages/user/createOrder/CreateOrder.jsx";
+import About from "./pages/user/about/About.jsx";
+import Contact from "./pages/user/contact/Contact.jsx";
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -53,6 +55,8 @@ export default function App() {
 
       children: [
         { path: "/", element: <Home /> },
+        { path: "about", element: <About /> },
+        { path: "contact", element: <Contact /> },
         { path: "product", element: <Products /> },
         { path: "category", element: <Categories /> },
         { path: "categories/:categoryId", element: <CategoryProducts /> },

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Loader from "../../../components/loader/loader"
+import Loader from "../../../components/loader/loader";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import { toast } from "react-toastify";
 
@@ -46,13 +46,6 @@ export default function Orders() {
           },
         }
       );
-
-      setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order._id === orderId ? { ...order, status: "cancelled" } : order
-        )
-      );
-
       toast.success("Order cancelled successfully! ");
     } catch (error) {
       console.log("Error cancelling order:", error);
@@ -61,17 +54,19 @@ export default function Orders() {
       setIsLoading(false);
     }
   };
+  
+  
   return (
     <>
-      <Container>
+      <Container className="ms-4">
         <h1 className="text-center mb-4">Orders</h1>
         <h2 className="mb-4 fw-bold">Orders List</h2>
         {orders.length === 0 ? (
           <p className="fw-bold">No orders available.</p>
         ) : (
-          <Row className="g-4">
+          <Row className="g-5">
             {orders.map((order) => (
-              <Col md={4} lg={4} key={order._id}>
+              <Col md={3} lg={5} key={order._id}>
                 <div className="border p-3 rounded shadow-sm bg-white h-100">
                   <p className="fw-bold mb-1">Address:</p>
                   <p>{order.address}</p>
@@ -115,6 +110,7 @@ export default function Orders() {
             ))}
           </Row>
         )}
+   
       </Container>
     </>
   );

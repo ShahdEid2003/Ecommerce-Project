@@ -6,7 +6,7 @@ export default function info() {
   return (
     <>
       {loading ? <Loader /> : null}
-      <section className="p-5">
+      <section className="p-5 ms-3">
         <p>User Name: {user.userName}</p>
         <p>Email:{user.email}</p>
         

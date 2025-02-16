@@ -20,18 +20,31 @@ export default function CustomNavbar() {
   };
 
   return (
-    <Navbar expand="lg" className=" sticky-top bg-body-tertiary">
+    <Navbar expand="lg" className=" sticky-top bg-white p-4 shadow">
       <Container>
-        <Navbar.Brand>T-Shop</Navbar.Brand>
+        <Navbar.Brand>
+          <img src="imageLogo.png" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            <Nav.Link as={Link} to={"/"}>
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to={"about"}>
+              About us
+            </Nav.Link>
             <Nav.Link as={Link} to={"product"}>
-              product
+              All products
             </Nav.Link>
             <Nav.Link as={Link} to={"category"}>
-              category
+              Categories
             </Nav.Link>
+            <Nav.Link as={Link} to={"contact"}>
+              Contact
+            </Nav.Link>
+          </Nav>
+          <Nav className="ms-auto">
             <Nav.Link as={Link} to={"cart"}>
               Cart {cartCount}
             </Nav.Link>
