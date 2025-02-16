@@ -15,8 +15,12 @@ export default function Home() {
             
         </div>
     </div>
-      <div className="container-fluid"></div>
-      <Category />
+      <div className="container-fluid">
+      <div className=" p-5 m-3">
+        <Category />
+        </div>
+      </div>
+      
     </>
   );
 }
