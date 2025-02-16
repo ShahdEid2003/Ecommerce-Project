@@ -60,7 +60,7 @@ export default function ProductDetails() {
       {error ? <div className="alert alert-danger">{error}</div> : ""}
 
       <div className="container text-center p-3">
-        <div className="row d-flex justify-content-center align-items-center vh-100">
+        <div className="row d-flex justify-content-center align-items-center ">
           <div className="col-md-6">
             <div className=" shadow p-3">
               <h4>{data.product.name}</h4>

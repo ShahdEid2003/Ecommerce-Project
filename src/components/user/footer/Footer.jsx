@@ -12,7 +12,7 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <>
-      <footer className="footer bg-dark text-white py-5">
+      <footer className="footer bg-dark text-white py-5 mt-5">
         <Container>
           <Row className="g-4">
             {/* About Us Section */}

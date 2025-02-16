@@ -4,6 +4,9 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { CiCircleRemove } from "react-icons/ci";
+
+import "./Cart.css";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { Link } from "react-router-dom";
 export default function Cart() {
@@ -123,52 +126,53 @@ export default function Cart() {
   };
 
   return (
-    <section className="cart">
+    <section className="cart-container mt-5  ">
       <h2 className="text-center">Your Cart</h2>
-      <Table striped bordered hover>
+      <Table className="cart-table" striped bordered hover>
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
+            <th>IMAGE</th>
+            <th>PRODUCT NAME</th>
+            <th>PRICE</th>
+            <th>QUANTITY</th>
+            <th>TOTAL</th>
+            <th>ACTION</th>
           </tr>
         </thead>
         <tbody>
           {cart.map((item) => (
             <tr key={item._id}>
               <td>
-                <img src={item.details.mainImage.secure_url} width="50px" />
+                <img src={item.details.mainImage.secure_url} width="70px" />
               </td>
               <td>{item.details.name}</td>
               <td>{item.details.finalPrice}$</td>
-              <td>
-                {item.quantity}
-                <Button onClick={() => increaseQty(item.productId)}>+</Button>
-                <Button onClick={() => decreasQty(item.productId)}>-</Button>
+              <td className="qytcell">
+                <button className="qty-btn" onClick={() => decreasQty(item.productId)}>-</button>
+                <span className="qty">{item.quantity}</span>
+                <button className="qty-btn" onClick={() => increaseQty(item.productId)}>+</button>
               </td>
               <td>{item.quantity * item.details.finalPrice}$</td>
               <td>
-                <Button
-                  variant="danger"
-                  onClick={() => removeItem(item.productId)}
-                >
-                  Remove
-                </Button>
+                <button className="remove-btn" onClick={() => removeItem(item.productId)}>
+                <CiCircleRemove />
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <Button variant="danger" onClick={clearCart} className="m-3">
-        Clear Cart
-      </Button>
-      <Button as={Link} to={"/create-order"}  className="m-3">
-        Create Order
-      </Button>
-      
+      <div className="cart-footer">
+        <div className="coupon-form">
+          <input type="text" className="coupon-input" placeholder="Enter your coupon code if you have one" />
+          <button className="apply-coupon">Apply Coupon</button>
+        </div>
+        <div className="cart-actions">
+          <button className="clear-cart" onClick={clearCart}>CLEAR CART</button>
+          <Button className="checkout" as={Link} to={"/create-order"}>PROCEED TO CHECKOUT</Button>
+        </div>
+      </div>
+</section>
 
-    </section>
   );
 }
