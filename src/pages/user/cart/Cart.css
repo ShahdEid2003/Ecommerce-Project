@@ -50,18 +50,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
     margin-top: 20px;
     padding: 10px;
   }
   
   .coupon-form {
     display: flex;
+   
+    gap:10px;
     align-items: center;
   }
   
   .coupon-input {
     padding: 10px;
-    width: 250px;
+    width: 350px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-right: 10px;
@@ -71,7 +75,7 @@
     background: #ff7b00;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
   }
@@ -79,7 +83,8 @@
   .cart-actions {
   
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap:10px;
   }
   
   .clear-cart, .checkout {
@@ -98,4 +103,34 @@
     background: rgb(47, 51, 58);
     color: white;
   }
+  @media (max-width: 768px) {
+    .cart-container {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .cart-table {
+      min-width: 600px;
+    }
+  
+  }
+  @media (max-width: 1000px){
+    .cart-footer,.cart-actions ,.coupon-form {
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .coupon-input {
+        width: 100%;
+    }
+
+  }
+  @media (max-width: 500px){
+    .coupon-form {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+}
   

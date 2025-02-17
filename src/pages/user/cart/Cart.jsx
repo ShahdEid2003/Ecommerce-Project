@@ -111,11 +111,15 @@ export default function Cart() {
   const clearCart = async () => {
     try {
       const token = localStorage.getItem("userToken");
-      await axios.patch("https://ecommerce-node4.onrender.com/cart/clear", null,{
-        headers: {
-          Authorization: `Tariq__${token}`,
-        },
-      });
+      await axios.patch(
+        "https://ecommerce-node4.onrender.com/cart/clear",
+        null,
+        {
+          headers: {
+            Authorization: `Tariq__${token}`,
+          },
+        }
+      );
       setCart([]);
       setCartCount(0);
     } catch (error) {
@@ -126,53 +130,78 @@ export default function Cart() {
   };
 
   return (
-    <section className="cart-container mt-5  ">
-      <h2 className="text-center">Your Cart</h2>
-      <Table className="cart-table" striped bordered hover>
-        <thead>
-          <tr>
-            <th>IMAGE</th>
-            <th>PRODUCT NAME</th>
-            <th>PRICE</th>
-            <th>QUANTITY</th>
-            <th>TOTAL</th>
-            <th>ACTION</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart.map((item) => (
-            <tr key={item._id}>
-              <td>
-                <img src={item.details.mainImage.secure_url} width="70px" />
-              </td>
-              <td>{item.details.name}</td>
-              <td>{item.details.finalPrice}$</td>
-              <td className="qytcell">
-                <button className="qty-btn" onClick={() => decreasQty(item.productId)}>-</button>
-                <span className="qty">{item.quantity}</span>
-                <button className="qty-btn" onClick={() => increaseQty(item.productId)}>+</button>
-              </td>
-              <td>{item.quantity * item.details.finalPrice}$</td>
-              <td>
-                <button className="remove-btn" onClick={() => removeItem(item.productId)}>
-                <CiCircleRemove />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      <div className="cart-footer">
-        <div className="coupon-form">
-          <input type="text" className="coupon-input" placeholder="Enter your coupon code if you have one" />
-          <button className="apply-coupon">Apply Coupon</button>
+    <>
+      <section className="cart">
+        <div className="cart-container mt-5  ">
+          <h2 className="text-center">Your Cart</h2>
+          <Table className="cart-table" striped bordered hover>
+            <thead>
+              <tr>
+                <th>IMAGE</th>
+                <th>PRODUCT NAME</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>TOTAL</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cart.map((item) => (
+                <tr key={item._id}>
+                  <td>
+                    <img src={item.details.mainImage.secure_url} width="70px" />
+                  </td>
+                  <td>{item.details.name}</td>
+                  <td>{item.details.finalPrice}$</td>
+                  <td className="qytcell">
+                    <button
+                      className="qty-btn"
+                      onClick={() => decreasQty(item.productId)}
+                    >
+                      -
+                    </button>
+                    <span className="qty">{item.quantity}</span>
+                    <button
+                      className="qty-btn"
+                      onClick={() => increaseQty(item.productId)}
+                    >
+                      +
+                    </button>
+                  </td>
+                  <td>{item.quantity * item.details.finalPrice}$</td>
+                  <td>
+                    <button
+                      className="remove-btn"
+                      onClick={() => removeItem(item.productId)}
+                    >
+                      <CiCircleRemove />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </div>
-        <div className="cart-actions">
-          <button className="clear-cart" onClick={clearCart}>CLEAR CART</button>
-          <Button className="checkout" as={Link} to={"/create-order"}>PROCEED TO CHECKOUT</Button>
-        </div>
-      </div>
-</section>
+        <div className="cart-footer cart-container">
+          <div className="coupon-form">
+            <input
+              type="text"
+              className="coupon-input"
+              placeholder="Enter your coupon code if you have one"
+            />
+            <button className="apply-coupon">Apply Coupon</button>
+          </div>
 
+          <div className="cart-actions ">
+            <button className="clear-cart" onClick={clearCart}>
+              CLEAR CART
+            </button>
+            <Button className="checkout" as={Link} to={"/create-order"}>
+              PROCEED TO CHECKOUT
+            </Button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
