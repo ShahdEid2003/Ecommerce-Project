@@ -18,7 +18,7 @@ import Profile from "./pages/user/profile/Profile.jsx";
 import Orders from "./pages/user/profile/Orders.jsx";
 import Info from "./pages/user/profile/Info.jsx";
 import UserContextProvider from "./components/user/context/UserContext.jsx";
-import AuthProtectedRoute from "./components/AuthProtectedRoute.jsx"
+import AuthProtectedRoute from "./components/AuthProtectedRoute.jsx";
 import Image from "./pages/user/profile/Image.jsx";
 import ForgotPassword from "./pages/user/forgotPassword/ForgotPassword.jsx";
 import CreateOrder from "./pages/user/createOrder/CreateOrder.jsx";
@@ -37,7 +37,6 @@ export default function App() {
         { path: "register", element: <Register /> },
         { path: "login", element: <Login /> },
         { path: "forgot", element: <ForgotPassword /> },
-       
       ],
     },
     {

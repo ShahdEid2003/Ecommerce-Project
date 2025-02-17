@@ -1,5 +1,20 @@
-html, body {
-
+html,
+body {
   margin: 0;
   padding: 0;
+}
+.btnOrange {
+  background-color: orangered;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btnOrange:hover {
+  background-color: rgb(47, 51, 58);
+  transition: background-color 0.2s ease-in-out;
+}
+.mainColor {
+  color: orangered;
 }
