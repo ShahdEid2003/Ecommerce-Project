@@ -1,8 +1,9 @@
-html,
-body {
+* {
   margin: 0;
   padding: 0;
+ 
 }
+
 .btnOrange {
   background-color: orangered;
   color: white;
@@ -17,4 +18,12 @@ body {
 }
 .mainColor {
   color: orangered;
+}
+:root{
+  --mainColor: orangered;
+  --backgroundColor:rgb(244, 245, 248);
+}
+
+body {
+  background-color: var(--backgroundColor);
 }

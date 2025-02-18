@@ -1,0 +1,31 @@
+.sort{
+    background-color: rgb(235, 235, 235);
+    font-size:medium;
+}
+.selector{
+    border:1px solid var(--mainColor) ;
+
+}
+.original-price {
+    font-size: 12px;
+    font-weight: bold; 
+  }
+  
+  .discounted-price {
+    
+    color: green;
+    font-weight: bold; 
+  }
+  .product{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+   
+    transition: transform 0.3s ease;
+  
+  }
+ .product:hover{
+    transform: scale(1.07); 
+ }

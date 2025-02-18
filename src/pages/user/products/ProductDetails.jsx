@@ -4,6 +4,7 @@ import Loader from "../../../components/loader/loader";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { CartContext } from "../../../components/user/context/CartContext";
+import { MdShoppingCart } from "react-icons/md";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import "./ProductDetails.css";
@@ -101,6 +102,13 @@ export default function ProductDetails() {
 
           <div className="col-12 col-md-6  mt-3 d-flex flex-column justify-content-start gap-3">
             <h4 className="product-name">{data.product.name}</h4>
+            <div>
+              {data.product.stock === 0 ? (
+                <span className="badge bg-danger">out of stock</span>
+              ) : (
+                <span className="badge bg-success">{data.product.stock} in stock</span>
+              )}
+            </div>
 
             <div className="d-flex flex-column gap-2 mt-3">
               <div className="price-details d-flex align-items-center ">
@@ -118,7 +126,7 @@ export default function ProductDetails() {
             </div>
             <div>
               <button onClick={addProductToCart} className="btnOrange mt-3 ">
-                Add to Cart
+              <MdShoppingCart /> Add to Cart
               </button>
             </div>
           </div>
