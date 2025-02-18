@@ -1,0 +1,15 @@
+.nav-item:hover{
+    color:var(--mainColor);
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    font-weight: bold;
+}
+.nav-item{
+    color: black;
+   
+   
+}
+.cart{
+    color: var(--mainColor);
+    font-weight: bold;
+}

@@ -8,6 +8,7 @@ import NavLink from "react-bootstrap/NavLink";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { UserContext } from "../../../components/user/context/UserContext";
+import"./navbar.css"
 
 export default function CustomNavbar() {
   const { cartCount } = useContext(CartContext);
@@ -28,24 +29,24 @@ export default function CustomNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to={"/"}>
+            <Nav.Link as={Link} to={"/"} className="nav-item">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to={"about"}>
+            <Nav.Link as={Link} to={"about"} className="nav-item">
               About us
             </Nav.Link>
-            <Nav.Link as={Link} to={"product"}>
+            <Nav.Link as={Link} to={"product"} className="nav-item">
               All products
             </Nav.Link>
-            <Nav.Link as={Link} to={"category"}>
+            <Nav.Link as={Link} to={"category"} className="nav-item">
               Categories
             </Nav.Link>
-            <Nav.Link as={Link} to={"contact"}>
+            <Nav.Link as={Link} to={"contact"} className="nav-item">
               Contact
             </Nav.Link>
           </Nav>
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to={"cart"}>
+            <Nav.Link as={Link} to={"cart"} className="cart">
               Cart {cartCount}
             </Nav.Link>
             <Dropdown as={NavItem}>

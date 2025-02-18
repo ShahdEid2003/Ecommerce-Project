@@ -75,7 +75,7 @@ export default function Products() {
     <>
       <h2 className="text-center m-5">Products</h2>
       <div className=" container-fluid ">
-        <div className=" sort d-flex justify-content-between align-items-center  p-2 rounded">
+        <div className=" sort d-flex justify-content-between align-items-center  p-2 ">
           <span className="text-sm">
             Showing <span className="fw-bold">{sortedProducts.length}</span>{" "}
             products
@@ -103,7 +103,7 @@ export default function Products() {
                 className=" col-12 col-sm-6 col-md-3   gy-3 gap-3 p-2 "
                 key={product._id}
               >
-                <div className="product shadow p-3 rounded h-100">
+                <div className="product shadow p-3  h-100">
                   <img src={product.mainImage.secure_url} alt="product" />
                   <div>
                     <p className="fw-bold">{product.name}</p>
