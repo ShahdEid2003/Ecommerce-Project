@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../../../components/user/context/CartContext";
 import "./Products.css";
+import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 export default function Products() {
   const [sortOption, setSortOption] = useState("Price (Low - High)");
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ export default function Products() {
   };
   return (
     <>
-      <h2 className="text-center m-5">Products</h2>
+    <MainVeiw title={"Poducts"} subtitle={"Home/products"}/> 
       <div className=" container-fluid ">
         <div className=" sort d-flex justify-content-between align-items-center  p-2 ">
           <span className="text-sm">

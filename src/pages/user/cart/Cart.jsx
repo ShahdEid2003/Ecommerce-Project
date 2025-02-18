@@ -6,6 +6,8 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { CiCircleRemove } from "react-icons/ci";
 
+import MainVeiw  from "../../../components/user/mainVeiw/MainVeiw";
+
 import "./Cart.css";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { Link } from "react-router-dom";
@@ -131,8 +133,9 @@ export default function Cart() {
 
   return (
     <>
+     <MainVeiw title={"Cart"} subtitle={"Home/cart"}/> 
       <section className="cart">
-        <div className="cart-container mt-5  ">
+        <div className="cart-container mt-1">
           <h2 className="text-center">Your Cart</h2>
           <Table className="cart-table" striped bordered hover>
             <thead>

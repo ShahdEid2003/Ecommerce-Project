@@ -8,6 +8,7 @@ import { MdShoppingCart } from "react-icons/md";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import "./ProductDetails.css";
+import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -76,6 +77,7 @@ export default function ProductDetails() {
 
   return (
     <>
+     <MainVeiw title={"Product Details"} subtitle={"Home/products/product details"}/> 
       <div className="container p-4 mt-5">
         <div className="row justify-content-center">
           <div className=" col-12 col-md-6">
