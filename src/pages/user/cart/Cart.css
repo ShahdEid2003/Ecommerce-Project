@@ -102,6 +102,10 @@
   background: rgb(47, 51, 58);
   color: white;
 }
+.checkout:hover {
+  background: rgb(47, 51, 58);
+  color: white;
+}
 @media (max-width: 768px) {
   .cart-container {
     overflow-x: auto;

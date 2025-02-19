@@ -1,5 +1,6 @@
 import React from "react";
 import Category from "../../../components/user/category/Category";
+import AllProducts from "../../../components/user/products/AllProducts"
 import "./Home.css";
 export default function Home() {
   return (
@@ -17,7 +18,11 @@ export default function Home() {
     </div>
       <div className="container-fluid">
       <div className=" p-5 m-3">
+        <h4 className=" fw-bold mb-3">Categories</h4>
         <Category />
+        </div>
+        <div className=" p-5 m-3">
+        <AllProducts />
         </div>
       </div>
       

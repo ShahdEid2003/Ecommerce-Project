@@ -199,7 +199,7 @@ export default function Cart() {
             <button className="clear-cart" onClick={clearCart}>
               CLEAR CART
             </button>
-            <Button className="checkout" as={Link} to={"/create-order"}>
+            <Button className="checkout " as={Link} to={"/create-order"}>
               PROCEED TO CHECKOUT
             </Button>
           </div>

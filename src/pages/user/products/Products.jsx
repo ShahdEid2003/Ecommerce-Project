@@ -74,7 +74,7 @@ export default function Products() {
   };
   return (
     <>
-    <MainVeiw title={"Poducts"} subtitle={"Home/products"}/> 
+    <MainVeiw title={"Products"} subtitle={"Home/products"}/> 
       <div className=" container-fluid ">
         <div className=" sort d-flex justify-content-between align-items-center  p-2 ">
           <span className="text-sm">
@@ -128,7 +128,7 @@ export default function Products() {
                   <div className="d-flex justify-content-center algin-items-center gap-2">
                     <Link
                       to={`/product/${product._id}`}
-                      className="text-decoration-none btnOrange fw-bold"
+                      className="text-decoration-none btnOrange "
                     >
                       Details
                     </Link>

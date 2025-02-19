@@ -1,0 +1,11 @@
+.contact-info {
+    background-color: var(--backgroundColor);
+    border-radius: 5px;
+  }
+  
+  .contact-form {
+    background: var(--backgroundColor);
+    border-radius: 5px;
+  }
+  
+  

@@ -7,14 +7,14 @@
 .btnOrange {
   background-color: orangered;
   color: white;
-  padding: 10px 10px;
+  padding: 5px 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .btnOrange:hover {
   background-color: rgb(47, 51, 58);
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
 }
 .mainColor {
   color: orangered;
