@@ -41,7 +41,7 @@ export default function Categories() {
                 src={category.image.secure_url}
                 alt={category.name}
                 className="img-fluid rounded shadow-sm"
-                style={{ width: "60%", height: "60%" }} 
+                style={{ width: "80%", height: "80%" }} 
               />
             </Link>
           </SwiperSlide>

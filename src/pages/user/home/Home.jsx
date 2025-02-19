@@ -16,12 +16,12 @@ export default function Home() {
             
         </div>
     </div>
-      <div className="container-fluid">
-      <div className=" p-5 m-3">
+      <div className="mt-2">
+      <div className=" m-5">
         <h4 className=" fw-bold mb-3">Categories</h4>
         <Category />
         </div>
-        <div className=" p-5 m-3">
+        <div className="  m-5">
         <AllProducts />
         </div>
       </div>
