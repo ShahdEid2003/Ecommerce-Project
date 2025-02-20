@@ -13,7 +13,7 @@ export default function About() {
           cutting-edge furniture and offer a wide variety of fashion-related
           content.
         </h2>
-        <div className="row ">
+        <div className="row gy-3">
           <div className="col-sm-12 col-lg-6">
             <img src={img1} alt="About Us" className="img-fluid h-100" />
           </div>

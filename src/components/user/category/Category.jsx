@@ -20,7 +20,7 @@ export default function Categories() {
   return (
     <>
       {error && <div className="alert alert-danger">{error}</div>}
-
+      <h3 className=" fw-bold mb-3   text-center">Categories</h3>
       <Swiper
         modules={[Navigation, Autoplay]}
         spaceBetween={20}

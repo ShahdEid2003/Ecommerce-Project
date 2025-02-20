@@ -55,8 +55,9 @@ export default function Products() {
 
   return (
     <>
-      <h4 className="fw-bold mb-3">All products</h4>
+      
       <div className="container-fluid">
+      <h3 className="fw-bold mb-3 subColor text-center"> Products</h3>
         <div className="sort d-flex justify-content-between align-items-center p-2">
           <span>
             Showing {Math.min(visibleProducts, sortedProducts.length)} of{" "}
@@ -75,7 +76,7 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row gy-3 d-flex justify-content-center">
           {sortedProducts.slice(0, visibleProducts).map((product) => (
             <div
               className="col-12 col-sm-6 col-md-3 gy-3 p-2"
@@ -84,7 +85,7 @@ export default function Products() {
               <div className="product shadow p-3  h-100">
                 <img src={product.mainImage.secure_url} alt="product" />
                 <div>
-                  <p className="fw-bold text-center">{product.name}</p>
+                  <p className=" text-center product-name">{product.name}</p>
                   {product.discount > 0 ? (
                     <div className="d-flex justify-content-center algin-items-center gap-2">
                       <p className="m-0 original-price text-danger text-decoration-line-through">
@@ -125,7 +126,7 @@ export default function Products() {
               onClick={() => setVisibleProducts(visibleProducts + 4)}
               className=" fw-bold btnOrange"
             >
-              Load More <MdOutlineCloudDownload />
+              See More <MdOutlineCloudDownload />
             </button>
           </div>
         )}

@@ -8,6 +8,7 @@ import NavLink from "react-bootstrap/NavLink";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { UserContext } from "../../../components/user/context/UserContext";
+import Logo from "../../../assets/img/imageLogo.png"
 import"./navbar.css"
 
 export default function CustomNavbar() {
@@ -24,7 +25,7 @@ export default function CustomNavbar() {
     <Navbar expand="lg" className=" sticky-top bg-white p-4 shadow">
       <Container>
         <Navbar.Brand>
-          <img src="imageLogo.png" />
+          <img src={Logo} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

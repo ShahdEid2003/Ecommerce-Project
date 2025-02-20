@@ -75,7 +75,7 @@ export default function Products() {
   return (
     <>
     <MainVeiw title={"Products"} subtitle={"Home/products"}/> 
-      <div className=" container-fluid ">
+      <div className=" container ">
         <div className=" sort d-flex justify-content-between align-items-center  p-2 ">
           <span className="text-sm">
             Showing <span className="fw-bold">{sortedProducts.length}</span>{" "}
@@ -97,17 +97,17 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="container-fluid text-center">
-          <div className="row">
+        <div className="container text-center">
+          <div className="row gy-3 d-flex justify-content-center">
             {sortedProducts.map((product) => (
               <div
                 className=" col-12 col-sm-6 col-md-3   gy-3 gap-3 p-2 "
                 key={product._id}
               >
                 <div className="product shadow p-3  h-100">
-                  <img src={product.mainImage.secure_url} alt="product" />
+                  <img src={product.mainImage.secure_url} alt="product" className="img-fluid" />
                   <div>
-                    <p className="fw-bold">{product.name}</p>
+                    <p className="product-name">{product.name}</p>
                     {product.discount > 0 ? (
                       <div className="d-flex justify-content-center algin-items-center gap-2">
                         <p className="m-0 original-price text-danger text-decoration-line-through">

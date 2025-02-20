@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 * {
   margin: 0;
   padding: 0;
  
 }
-
+.bg-gray{
+  background-color: #f4f4f4;
+}
 .btnOrange {
   background-color: orangered;
   color: white;
@@ -19,11 +22,17 @@
 .mainColor {
   color: orangered;
 }
+.subColor{
+color:rgb(47, 51, 58);
+}
 :root{
   --mainColor: orangered;
   --backgroundColor:rgb(244, 245, 248);
 }
 
-body {
-  background-color: var(--backgroundColor);
+html,body {
+  font-family: "Raleway", serif !important;
+}
+.product-name{
+  font-weight:550;
 }
