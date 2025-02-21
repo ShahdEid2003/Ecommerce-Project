@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { CiCircleRemove } from "react-icons/ci";
 
-import MainVeiw  from "../../../components/user/mainVeiw/MainVeiw";
+import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 
 import "./Cart.css";
 import { CartContext } from "../../../components/user/context/CartContext";
@@ -133,7 +133,7 @@ export default function Cart() {
 
   return (
     <>
-     <MainVeiw title={"Cart"} subtitle={"Home/cart"}/> 
+      <MainVeiw title={"Cart"} subtitle={"Home/cart"} />
       <section className="cart">
         <div className="cart-container mt-1">
           <h2 className="text-center">Your Cart</h2>
@@ -199,9 +199,11 @@ export default function Cart() {
             <button className="clear-cart" onClick={clearCart}>
               CLEAR CART
             </button>
-            <Button className="checkout " as={Link} to={"/create-order"}>
-              PROCEED TO CHECKOUT
-            </Button>
+            {cart.length > 0 && (
+              <Button className="checkout " as={Link} to={"/create-order"}>
+                PROCEED TO CHECKOUT
+              </Button>
+            )}
           </div>
         </div>
       </section>
