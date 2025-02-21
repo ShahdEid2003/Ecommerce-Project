@@ -13,7 +13,7 @@ export default function SideBarProfile({ open, handleClose }) {
         <div className="modal-overlay" onClick={handleClose}>
           <div
             className={`sidebar-container ${isCollapsed ? "collapsed" : ""}`}
-            onClick={(e) => e.stopPropagation()} // يمنع إغلاق الـ Modal عند النقر داخل القائمة
+            onClick={(e) => e.stopPropagation()} 
           >
             <Sidebar collapsed={isCollapsed} className="vh-100">
               <button className="close-btn" onClick={handleClose}>
