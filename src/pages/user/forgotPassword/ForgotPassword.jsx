@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "./forgotPassword.css";
+import "../login/login.css";
 
 export default function ForgotPassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -66,51 +66,74 @@ export default function ForgotPassword() {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container>
       <Form onSubmit={handleSubmit(forgotPassword)} className="form-container">
-        <Card className="p-20 shadow">
+        <div className="auth-card p-20 shadow">
           <h2 className="text-center mb-4">Forgot Password</h2>
           {serverError && <div className="text-danger mb-3">{serverError}</div>}
 
-          <FloatingLabel controlId="floatingInput" label="Email Address" className="mb-3 w-100 p-2">
+          <FloatingLabel
+            controlId="floatingInput"
+            label="Email Address"
+            className="mb-3 w-100 p-2"
+          >
             <Form.Control
               type="email"
               placeholder="name@example.com"
               {...register("email", { required: "Email is required" })}
             />
-            {errors.email && <div className="text-danger">{errors.email.message}</div>}
+            {errors.email && (
+              <div className="text-danger">{errors.email.message}</div>
+            )}
           </FloatingLabel>
 
           <Button
             variant="primary"
-            className="w-50"
+            className="w-50 auth-button"
             onClick={() => sendCode({ email: getValues("email") })}
           >
             Send Code
           </Button>
 
-          <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3 w-100 p-2">
+          <FloatingLabel
+            controlId="floatingPassword"
+            label="Password"
+            className="mb-3 w-100 p-2"
+          >
             <Form.Control
               type="password"
               placeholder="New Password"
               {...register("password", { required: "Password is required" })}
             />
-            {errors.password && <div className="text-danger">{errors.password.message}</div>}
+            {errors.password && (
+              <div className="text-danger">{errors.password.message}</div>
+            )}
           </FloatingLabel>
 
-          <FloatingLabel controlId="floatingCode" label="Code" className="mb-3 w-100 p-2">
+          <FloatingLabel
+            controlId="floatingCode"
+            label="Code"
+            className="mb-3 w-100 p-2"
+          >
             <Form.Control
               type="text"
               placeholder="Code"
               {...register("code", { required: "Code is required" })}
             />
-            {errors.code && <div className="text-danger">{errors.code.message}</div>}
+            {errors.code && (
+              <div className="text-danger">{errors.code.message}</div>
+            )}
           </FloatingLabel>
 
-          <Button type="submit" variant="primary" className="w-50" disabled={isLoading}>
+          <Button
+            type="submit"
+            variant="primary"
+            className="w-50 auth-button"
+            disabled={isLoading}
+          >
             {isLoading ? "...Loading" : "Submit"}
           </Button>
-        </Card>
+        </div>
       </Form>
     </Container>
   );

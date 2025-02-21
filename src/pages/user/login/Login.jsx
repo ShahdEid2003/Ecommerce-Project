@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, FloatingLabel, Container, Card } from "react-bootstrap";
+import { Form, Button, FloatingLabel, Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
@@ -17,35 +17,36 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const registerUser = async (value) => {
     setIsLoading(true);
-
     try {
       const response = await axios.post(
         `https://ecommerce-node4.onrender.com/auth/signin`,
         value
       );
-      if (response.status == 200) {
+      if (response.status === 200) {
         localStorage.setItem("userToken", response.data.token);
         navigate("/");
       }
     } catch (error) {
-      setServerError(error.response.data.message);
+      setServerError(error.response?.data?.message || "An error occurred");
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container>
       <Form onSubmit={handleSubmit(registerUser)} className="form-container">
-        <Card className="p-20 shadow">
-          <h2 className="text-center mb-4">Login</h2>
+        <div className="auth-card d-flex justify-content-center align-items-center gap-2 flex-column shadow">
+          <h2 className="text-center mb-4 fw-bold">Login</h2>
           {serverError && <div className="text-danger mb-3">{serverError}</div>}
 
           <FloatingLabel
             controlId="floatingInput"
             label="Email Address"
-            className="mb-3 w-100 p-2"
+            className="mb-3 w-100 p-2 floatingLabel"
           >
             <Form.Control
               type="email"
@@ -60,7 +61,7 @@ export default function Login() {
           <FloatingLabel
             controlId="floatingPassword"
             label="Password"
-            className="mb-3 w-100  p-2"
+            className="mb-3 w-100 p-2 floatingLabel"
           >
             <Form.Control
               type="password"
@@ -72,21 +73,31 @@ export default function Login() {
             )}
           </FloatingLabel>
 
-          <Button
-            type="submit"
-            variant="primary"
-            className="w-50"
-            disabled={isLoading}
-          >
-            {isLoading ? "...Loading" : "Login"}
-          </Button>
-          <Button as={Link} to={"/auth/register"}>
-            sign up
-          </Button>
-          <Button as={Link} to={"/auth/forgot"}>
-            Forgot Password?
-          </Button>
-        </Card>
+          <div className="row gap-5 w-100 d-flex flex-column align-items-center">
+            <Button
+              type="submit"
+              className="w-50 auth-button"
+              disabled={isLoading}
+            >
+              {isLoading ? "...Loading" : "SIGN IN"}
+            </Button>
+
+            <div className="row d-flex justify-content-center align-items-center w-100">
+              <div className="col-6 text-center">
+                <Link to="/auth/register" className="text-decoration-none">
+                  <div className="btnRegister text-decoration-none p-2">
+                    SIGN UP
+                  </div>
+                </Link>
+              </div>
+              <div className="col-6 text-center">
+                <Link to="/auth/forgot" className="text-decoration-none">
+                  <div className="btnPassword  p-2">Forgot Password?</div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </Form>
     </Container>
   );

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import './profile.css';
 import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 
-export default function Orders({ isCollapsed }) {
+export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
