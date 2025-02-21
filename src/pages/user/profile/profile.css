@@ -1,4 +1,28 @@
-body{
-    overflow-x: hidden;
-  }
-  
+.iconList {
+  width: 70px;
+  height: 60px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  padding-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.pagination .page-item .page-link {
+  color: black; 
+  border: 1px solid #ddd;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination .page-item .page-link:hover {
+  background-color: var(--mainColor) ; 
+  color: white ; 
+  border-color: var(--mainColor)  ;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--mainColor)  ; 
+  border-color: var(--mainColor) ;
+  color: white ;
+}
+

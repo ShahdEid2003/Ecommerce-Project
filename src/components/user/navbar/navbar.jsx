@@ -8,8 +8,8 @@ import NavLink from "react-bootstrap/NavLink";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { UserContext } from "../../../components/user/context/UserContext";
-import Logo from "../../../assets/img/imageLogo.png"
-import"./navbar.css"
+import Logo from "../../../assets/img/imageLogo.png";
+import "./navbar.css";
 
 export default function CustomNavbar() {
   const { cartCount } = useContext(CartContext);
@@ -56,7 +56,7 @@ export default function CustomNavbar() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={"profile"}>
+                <Dropdown.Item as={Link} to={"profile/info"}>
                   Welcome {loading ? "..." : user.userName}
                 </Dropdown.Item>
 
