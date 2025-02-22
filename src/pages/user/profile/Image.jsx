@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import Loader from "../../../components/loader/loader";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../components/user/context/UserContext";
+import personalImage from"../../../assets/img/personalprofile.png"
 
 export default function Image() {
   const {
@@ -63,7 +64,7 @@ export default function Image() {
       <Form
         onSubmit={handleSubmit(updateImage)}
         encType="multipart/form-data"
-        className="shadow p-5 ms-4"
+        className="shadow container p-5"
       >
         <Form.Group controlId="updateImage">
           <Form.Label>Update Profile Picture</Form.Label>
@@ -79,7 +80,7 @@ export default function Image() {
     
         <div className="mt-3">
           <img
-            src={imagePreview || user?.image?.secure_url ||"personalprofile.png"}
+            src={imagePreview || user?.image?.secure_url || personalImage}
             alt="Profile img"
             width={200}
             className="border rounded"

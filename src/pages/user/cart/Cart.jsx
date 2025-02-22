@@ -5,7 +5,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { CiCircleRemove } from "react-icons/ci";
-
+import { BsBagX } from "react-icons/bs";
 import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 
 import "./Cart.css";
@@ -149,39 +149,53 @@ export default function Cart() {
               </tr>
             </thead>
             <tbody>
-              {cart.map((item) => (
-                <tr key={item._id}>
-                  <td>
-                    <img src={item.details.mainImage.secure_url} width="70px" />
-                  </td>
-                  <td>{item.details.name}</td>
-                  <td>{item.details.finalPrice}$</td>
-                  <td className="qytcell">
-                    <button
-                      className="qty-btn"
-                      onClick={() => decreasQty(item.productId)}
-                    >
-                      -
-                    </button>
-                    <span className="qty">{item.quantity}</span>
-                    <button
-                      className="qty-btn"
-                      onClick={() => increaseQty(item.productId)}
-                    >
-                      +
-                    </button>
-                  </td>
-                  <td>{item.quantity * item.details.finalPrice}$</td>
-                  <td>
-                    <button
-                      className="remove-btn"
-                      onClick={() => removeItem(item.productId)}
-                    >
-                      <CiCircleRemove />
-                    </button>
+              {cart.length === 0 ? (
+                <tr>
+                  <td colSpan="6" className="text-center">
+                    <BsBagX size={150} color="orangered" className="m-3" />
+                    <p className="text-muted">Your cart is empty</p>
                   </td>
                 </tr>
-              ))}
+              ) : (
+                <>
+                  {cart.map((item) => (
+                    <tr key={item._id}>
+                      <td>
+                        <img
+                          src={item.details.mainImage.secure_url}
+                          width="70px"
+                        />
+                      </td>
+                      <td>{item.details.name}</td>
+                      <td>{item.details.finalPrice}$</td>
+                      <td className="qytcell">
+                        <button
+                          className="qty-btn"
+                          onClick={() => decreasQty(item.productId)}
+                        >
+                          -
+                        </button>
+                        <span className="qty">{item.quantity}</span>
+                        <button
+                          className="qty-btn"
+                          onClick={() => increaseQty(item.productId)}
+                        >
+                          +
+                        </button>
+                      </td>
+                      <td>{item.quantity * item.details.finalPrice}$</td>
+                      <td>
+                        <button
+                          className="remove-btn"
+                          onClick={() => removeItem(item.productId)}
+                        >
+                          <CiCircleRemove />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              )}
             </tbody>
           </Table>
         </div>
