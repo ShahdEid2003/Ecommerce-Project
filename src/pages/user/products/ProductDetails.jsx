@@ -14,7 +14,9 @@ export default function ProductDetails() {
   const { productId } = useParams();
   const [visibleReviews, setVisibleReviews] = useState(1);
   const [activeTab, setActiveTab] = useState("description");
-
+  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
   const navigate = useNavigate();
   const { cartCount, setCartCount } = useContext(CartContext);
   const { data, error, isLoading } = UseFetch(
@@ -74,10 +76,32 @@ export default function ProductDetails() {
       console.log(error);
     }
   };
-
+  const submitReview = async () => {
+    try {
+      const token = localStorage.getItem("userToken");
+      await axios.post(
+        `https://ecommerce-node4.onrender.com/products/${productId}/review`,
+        { comment, rating },
+        {
+          headers: {
+            Authorization: `Tariq__${token}`,
+          },
+        }
+      );
+      toast.success("Review submitted successfully");
+      setComment("");
+      setRating(0);
+    } catch (error) {
+      toast.error("Failed to submit review");
+      console.error(error);
+    }
+  };
   return (
     <>
-     <MainVeiw title={"Product Details"} subtitle={"Home/products/product details"}/> 
+      <MainVeiw
+        title={"Product Details"}
+        subtitle={"Home/products/product details"}
+      />
       <div className="container p-4 mt-5">
         <div className="row justify-content-center">
           <div className=" col-12 col-md-6">
@@ -108,7 +132,9 @@ export default function ProductDetails() {
               {data.product.stock === 0 ? (
                 <span className="badge bg-danger">out of stock</span>
               ) : (
-                <span className="badge bg-success">{data.product.stock} in stock</span>
+                <span className="badge bg-success">
+                  {data.product.stock} in stock
+                </span>
               )}
             </div>
 
@@ -128,7 +154,7 @@ export default function ProductDetails() {
             </div>
             <div>
               <button onClick={addProductToCart} className="btnOrange mt-3 ">
-              <MdShoppingCart /> Add to Cart
+                <MdShoppingCart /> Add to Cart
               </button>
             </div>
           </div>
@@ -155,6 +181,16 @@ export default function ProductDetails() {
                 onClick={() => setActiveTab("reviews")}
               >
                 Reviews
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`nav-link ${
+                  activeTab === "createreviews" ? "active" : ""
+                }`}
+                onClick={() => setActiveTab("createreviews")}
+              >
+                Create Review
               </button>
             </li>
           </ul>
@@ -201,6 +237,38 @@ export default function ProductDetails() {
                     Load More Reviews
                   </button>
                 )}
+              </div>
+            )}
+
+            {activeTab === "createreviews" && (
+              <div className="createreviews">
+                <h5 className="fw-bold">Leave a Review</h5>
+                <div className="star-rating">
+                  {[...Array(5)].map((_, index) => (
+                    <FaStar
+                      key={index}
+                      className="star"
+                      size={30}
+                      color={
+                        index + 1 <= (hoverRating || rating)
+                          ? "orangered"
+                          : "#e4e5e9"
+                      }
+                      onClick={() => setRating(index + 1)}
+                      onMouseEnter={() => setHoverRating(index + 1)}
+                      onMouseLeave={() => setHoverRating(0)}
+                    />
+                  ))}
+                </div>
+                <textarea
+                  className="form-control mt-3"
+                  placeholder="Write your review..."
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+                <button className="btnOrange mt-3" onClick={submitReview}>
+                  Submit Review
+                </button>
               </div>
             )}
           </div>
