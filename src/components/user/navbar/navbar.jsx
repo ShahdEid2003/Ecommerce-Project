@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { UserContext } from "../../../components/user/context/UserContext";
 import Logo from "../../../assets/img/imageLogo.png";
+import { FaCartShopping } from "react-icons/fa6";
 import "./navbar.css";
 
 export default function CustomNavbar() {
@@ -48,7 +50,8 @@ export default function CustomNavbar() {
           </Nav>
           <Nav className="ms-auto">
             <Nav.Link as={Link} to={"cart"} className="cart">
-              Cart {cartCount}
+              <FaCartShopping />
+              {cartCount}
             </Nav.Link>
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={NavLink}>

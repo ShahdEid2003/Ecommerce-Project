@@ -55,9 +55,8 @@ export default function Products() {
 
   return (
     <>
-      
       <div className="container-fluid">
-      <h3 className="fw-bold mb-3 subColor text-center"> Products</h3>
+        <h3 className="fw-bold mb-3 subColor text-center"> Products</h3>
         <div className="sort d-flex justify-content-between align-items-center p-2">
           <span>
             Showing {Math.min(visibleProducts, sortedProducts.length)} of{" "}
@@ -79,11 +78,15 @@ export default function Products() {
         <div className="row gy-3 d-flex justify-content-center">
           {sortedProducts.slice(0, visibleProducts).map((product) => (
             <div
-              className="col-12 col-sm-6 col-md-3 gy-3 p-2"
+              className="col-12 col-sm-6 col-md-4 col-lg-3 gy-3 p-2"
               key={product._id}
             >
               <div className="product shadow p-3  h-100">
-                <img src={product.mainImage.secure_url} alt="product" />
+                <img
+                  src={product.mainImage.secure_url}
+                  alt="product"
+                  className="img-fluid"
+                />
                 <div>
                   <p className=" text-center product-name">{product.name}</p>
                   {product.discount > 0 ? (
