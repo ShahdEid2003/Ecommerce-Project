@@ -35,9 +35,8 @@ export default function Home() {
       <div className="mt-2">
         <div className=" m-5">
           <motion.div
-            className="m-5"
-            initial={{ opacity: 0, y: 50 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -46,7 +45,6 @@ export default function Home() {
         </div>
         <div className="  m-5">
           <motion.div
-            className="m-5"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
