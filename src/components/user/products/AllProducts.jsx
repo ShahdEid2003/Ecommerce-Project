@@ -57,11 +57,11 @@ export default function Products() {
     <>
       <div className="container-fluid">
         <h3 className="fw-bold mb-3 subColor text-center"> Products</h3>
-        <div className="sort d-flex justify-content-between align-items-center p-2">
-          <span>
-            Showing {Math.min(visibleProducts, sortedProducts.length)} of{" "}
-            {sortedProducts.length} products
-          </span>
+        <div className="sort d-flex flex-wrap justify-content-between align-items-center p-2">
+          <p>
+            Showing <span className="fw-bold">{Math.min(visibleProducts, sortedProducts.length)}</span> of{" "}
+            <span className="fw-bold">{sortedProducts.length}</span> products
+          </p>
           <div>
             <label htmlFor="sort">Sort by</label>
             <select

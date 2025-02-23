@@ -11,6 +11,7 @@ import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 import "./Cart.css";
 import { CartContext } from "../../../components/user/context/CartContext";
 import { Link } from "react-router-dom";
+import ScrollTop from "../../../components/ScrollTop";
 export default function Cart() {
   const { cartCount, setCartCount } = useContext(CartContext);
   const [cart, setCart] = useState(null);
@@ -133,6 +134,7 @@ export default function Cart() {
 
   return (
     <>
+    <ScrollTop />
       <MainVeiw title={"Cart"} subtitle={"Home/cart"} />
       <section className="cart">
         <div className="cart-container mt-1">

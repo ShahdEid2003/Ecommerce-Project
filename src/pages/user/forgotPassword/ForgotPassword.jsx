@@ -67,7 +67,7 @@ export default function ForgotPassword() {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit(forgotPassword)} className="form-container">
+      <Form onSubmit={handleSubmit(forgotPassword)} className="form-container vh-100">
         <div className="auth-card p-20 shadow">
           <h2 className="text-center mb-4">Forgot Password</h2>
           {serverError && <div className="text-danger mb-3">{serverError}</div>}

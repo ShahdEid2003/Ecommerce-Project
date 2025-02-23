@@ -54,7 +54,7 @@ export default function Register() {
   };
   return (
     <Container>
-      <Form onSubmit={handleSubmit(registerUser)} className="form-container">
+      <Form onSubmit={handleSubmit(registerUser)} className="form-container vh-100">
         <div className=" auth-card d-flex justify-content-center align-items-center gap-2 flex-column shadow">
           <h2 className="text-center mb-4 fw-bold">SIGN UP</h2>
           {serverError ?? <div className="text-danger">{serverError}</div>}
