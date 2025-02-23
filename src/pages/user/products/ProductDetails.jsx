@@ -9,6 +9,7 @@ import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import "./ProductDetails.css";
 import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
+import ScrollTop from "../../../components/ScrollTop";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -93,11 +94,12 @@ export default function ProductDetails() {
       setRating(0);
     } catch (error) {
       toast.error("Failed to submit review");
-      console.error(error);
+      console.log(error);
     }
   };
   return (
     <>
+    <ScrollTop />
       <MainVeiw
         title={"Product Details"}
         subtitle={"Home/products/product details"}

@@ -11,6 +11,7 @@ import { CartContext } from "../../../components/user/context/CartContext";
 import "./Products.css";
 import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 import { FaRegFrownOpen } from "react-icons/fa";
+import ScrollTop from "../../../components/ScrollTop";
 
 export default function CategoryProduct() {
   const { categoryId } = useParams();
@@ -59,6 +60,7 @@ export default function CategoryProduct() {
 
   return (
     <>
+    <ScrollTop />
       <MainVeiw title={"Products"} subtitle={"Home/category/products"} />
       <div className="container-fluid">
         <div className="sort d-flex justify-content-between align-items-center p-2">

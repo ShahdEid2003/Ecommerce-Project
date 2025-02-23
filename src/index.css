@@ -36,3 +36,6 @@ html,body {
 .product-name{
   font-weight:550;
 }
+.category:hover{
+  transform: scale(1.07); 
+}

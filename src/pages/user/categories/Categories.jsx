@@ -4,7 +4,7 @@ import Loader from "../../../components/loader/loader";
 import { Link } from "react-router-dom";
 import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 
-import { Button } from "react-bootstrap";
+
 
 export default function Categories() {
   const { data, error, isLoading } = UseFetch(
@@ -22,17 +22,13 @@ export default function Categories() {
           {data.categories.map((category) => (
             <div className="col-sm-6 col-md-3" key={category._id}>
               <div className="category shadow p-3 rounded ">
-                <img
-                  src={category.image.secure_url}
-                  alt="Category"
-                  className="img-fluid w-100"
-                />
-                <Link
-                  to={`/categories/${category._id}`}
-                  className="text-decoration-none fw-bold btnOrange "
-                >
-                  show products
-                </Link>        
+                <Link to={`/categories/${category._id}`}>
+                  <img
+                    src={category.image.secure_url}
+                    alt="Category"
+                    className="img-fluid w-100"
+                  />
+                </Link>
               </div>
             </div>
           ))}

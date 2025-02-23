@@ -5,6 +5,7 @@ import { Container, Row, Col, Badge, Pagination } from "react-bootstrap";
 import { toast } from "react-toastify";
 import './profile.css';
 import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
+import ScrollTop from "../../../components/ScrollTop";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -70,6 +71,7 @@ export default function Orders() {
 
   return (
     <>
+    <ScrollTop />
     
      <Container className="bg-light rounded">
      <MainVeiw title={"Your Orders"} subtitle={"Home/Profile/Orders"} />

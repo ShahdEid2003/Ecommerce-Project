@@ -9,6 +9,7 @@ import { CartContext } from "../../../components/user/context/CartContext";
 import Loader from "../../../components/loader/loader";
 import MainView from "../../../components/user/mainVeiw/MainVeiw";
 import "./Products.css";
+import ScrollTop from "../../../components/ScrollTop";
 
 export default function Products() {
   const [sortOption, setSortOption] = useState("Price (Low - High)");
@@ -69,13 +70,14 @@ export default function Products() {
 
   return (
     <>
+    <ScrollTop />
       <MainView title="Products" subtitle="Home / Products" />
       <div className="container">
         <div className="sort d-flex justify-content-between align-items-center p-2 flex-wrap">
           <div>
             Showing <b>{sortedProducts.length}</b> products
           </div>
-          <div className="d-flex gap-3 justify-content-center align-items-center p-2">
+          <div className="d-flex  flex-wrap  justify-content-between align-items-center p-2">
             <div style={{ display: "flex", alignItems: "center" }}>
               <FaSearch
                 onClick={toggleSearch}
@@ -105,6 +107,7 @@ export default function Products() {
             </div>
           </div>
         </div>
+        
         <div className="text-center">
           <div className="row gy-3 d-flex justify-content-center">
             {sortedProducts.map((product) => (
@@ -162,3 +165,4 @@ export default function Products() {
     </>
   );
 }
+
