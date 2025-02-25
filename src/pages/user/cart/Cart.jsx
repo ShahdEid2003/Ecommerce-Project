@@ -65,29 +65,38 @@ export default function Cart() {
     });
     console.log(response);
   };
+
   const decreasQty = async (productId) => {
-    const token = localStorage.getItem("userToken");
-    const response = await axios.patch(
-      `https://ecommerce-node4.onrender.com/cart/decraseQuantity`,
-      {
-        productId: productId,
-      },
-      {
-        headers: {
-          Authorization: `Tariq__${token}`,
-        },
-      }
-    );
-    setCart((prevCart) => {
-      return prevCart.map((item) => {
-        if (item.productId === productId) {
-          return { ...item, quantity: item.quantity - 1 };
+    try {
+      setCart((prevCart) => {
+        const product = prevCart.find((item) => item.productId === productId);
+  
+        if (!product || product.quantity <= 1) {
+          return prevCart;
         }
-        return item;
+  
+        return prevCart.map((item) =>
+          item.productId === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        );
       });
-    });
-    console.log(response);
+  
+      const token = localStorage.getItem("userToken");
+      const response = await axios.patch(
+        `https://ecommerce-node4.onrender.com/cart/decraseQuantity`,
+        { productId },
+        {
+          headers: { Authorization: `Tariq__${token}` },
+        }
+      );
+  
+      console.log(response);
+    } catch (error) {
+      console.error("error", error);
+    } 
   };
+  
   const removeItem = async (productId) => {
     try {
       const token = localStorage.getItem("userToken");

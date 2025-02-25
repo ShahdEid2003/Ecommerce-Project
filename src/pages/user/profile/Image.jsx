@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import Loader from "../../../components/loader/loader";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../components/user/context/UserContext";
-import personalImage from"../../../assets/img/personalprofile.png"
-
+import personalImage from "../../../assets/img/personalprofile.png";
+import { useEffect } from "react";
 export default function Image() {
   const {
     register,
@@ -16,7 +16,11 @@ export default function Image() {
   } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    setImagePreview(user?.image?.secure_url);
+  }, [user]);
 
   const updateImage = async (data) => {
     if (!data.image || data.image.length === 0) {
@@ -43,6 +47,16 @@ export default function Image() {
       if (response.status === 200) {
         toast.success("Image updated successfully");
       }
+
+      setUser((prevUser) => ({
+        ...prevUser,
+        image: {
+          ...prevUser.image,
+          secure_url: response.data.user.image.secure_url,
+        },
+      }));
+
+      console.log(response);
     } catch (error) {
       toast.error("Error updating image");
       console.error(error);
@@ -60,7 +74,7 @@ export default function Image() {
 
   return (
     <>
-      {isLoading && <Loader />} 
+      {isLoading && <Loader />}
       <Form
         onSubmit={handleSubmit(updateImage)}
         encType="multipart/form-data"
@@ -70,14 +84,15 @@ export default function Image() {
           <Form.Label>Update Profile Picture</Form.Label>
           <Form.Control
             type="file"
-            accept="image/*" 
-            {...register("image", { required: "Image is required" })} 
+            accept="image/*"
+            {...register("image", { required: "Image is required" })}
             onChange={handleImageChange}
           />
-          {errors.image && <p className="text-danger">{errors.image.message}</p>}
+          {errors.image && (
+            <p className="text-danger">{errors.image.message}</p>
+          )}
         </Form.Group>
 
-    
         <div className="mt-3">
           <img
             src={imagePreview || user?.image?.secure_url || personalImage}
