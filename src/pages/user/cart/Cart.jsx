@@ -67,36 +67,28 @@ export default function Cart() {
   };
 
   const decreasQty = async (productId) => {
-    try {
-      setCart((prevCart) => {
-        const product = prevCart.find((item) => item.productId === productId);
-  
-        if (!product || product.quantity <= 1) {
-          return prevCart;
+    const token = localStorage.getItem("userToken");
+    const response = await axios.patch(
+      `https://ecommerce-node4.onrender.com/cart/decraseQuantity`,
+      {
+        productId: productId,
+      },
+      {
+        headers: {
+          Authorization: `Tariq__${token}`,
+        },
+      }
+    );
+    setCart((prevCart) => {
+      return prevCart.map((item) => {
+        if (item.productId === productId) {
+          return { ...item, quantity: item.quantity - 1 };
         }
-  
-        return prevCart.map((item) =>
-          item.productId === productId
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        );
+        return item;
       });
-  
-      const token = localStorage.getItem("userToken");
-      const response = await axios.patch(
-        `https://ecommerce-node4.onrender.com/cart/decraseQuantity`,
-        { productId },
-        {
-          headers: { Authorization: `Tariq__${token}` },
-        }
-      );
-  
-      console.log(response);
-    } catch (error) {
-      console.error("error", error);
-    } 
+    });
+    console.log(response);
   };
-  
   const removeItem = async (productId) => {
     try {
       const token = localStorage.getItem("userToken");
@@ -143,7 +135,7 @@ export default function Cart() {
 
   return (
     <>
-    <ScrollTop />
+      <ScrollTop />
       <MainVeiw title={"Cart"} subtitle={"Home/cart"} />
       <section className="cart">
         <div className="cart-container mt-1">
@@ -183,6 +175,7 @@ export default function Cart() {
                         <button
                           className="qty-btn"
                           onClick={() => decreasQty(item.productId)}
+                          disabled={item.quantity <= 1}
                         >
                           -
                         </button>
