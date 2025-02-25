@@ -20,7 +20,7 @@ export default function CategoryProduct() {
   const { cartCount, setCartCount } = useContext(CartContext);
 
   const { data, error, isLoading } = UseFetch(
-    `https://ecommerce-node4.onrender.com/products/category/${categoryId}`
+    `${import.meta.env.VITE_BURL}/products/category/${categoryId}`
   );
 
   if (isLoading) {
@@ -44,7 +44,7 @@ export default function CategoryProduct() {
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        `https://ecommerce-node4.onrender.com/cart`,
+        `${import.meta.env.VITE_BURL}/cart`,
         { productId: productId },
         { headers: { Authorization: `Tariq__${token}` } }
       );

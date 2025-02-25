@@ -8,7 +8,7 @@ const UserContextProvider = ({ children }) => {
   const getUser = async () => {
     try {
       const response = await axios.get(
-        `https://ecommerce-node4.onrender.com/user/profile`,
+        `${import.meta.env.VITE_BURL}/user/profile`,
         {
           headers: {
             Authorization: `Tariq__${localStorage.getItem("userToken")}`,

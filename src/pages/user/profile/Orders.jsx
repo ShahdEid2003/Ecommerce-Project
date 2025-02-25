@@ -17,7 +17,7 @@ export default function Orders() {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        "https://ecommerce-node4.onrender.com/order",
+        `${import.meta.env.VITE_BURL}/order`,
         {
           headers: {
             Authorization: `Tariq__${localStorage.getItem("userToken")}`,
@@ -40,7 +40,7 @@ export default function Orders() {
     setIsLoading(true);
     try {
       await axios.patch(
-        `https://ecommerce-node4.onrender.com/order/cancel/${orderId}`,
+        `${import.meta.env.VITE_BURL}/order/cancel/${orderId}`,
         {},
         {
           headers: {

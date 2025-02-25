@@ -24,7 +24,7 @@ import ForgotPassword from "./pages/user/forgotPassword/ForgotPassword.jsx";
 import CreateOrder from "./pages/user/createOrder/CreateOrder.jsx";
 import About from "./pages/user/about/About.jsx";
 import Contact from "./pages/user/contact/Contact.jsx";
-import ScrollToTop from "./components/ScrollTop.jsx";
+
 export default function App() {
   const router = createBrowserRouter([
     {

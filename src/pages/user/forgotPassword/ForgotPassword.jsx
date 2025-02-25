@@ -21,7 +21,7 @@ export default function ForgotPassword() {
   const sendCode = async (value) => {
     try {
       const res = await axios.patch(
-        `https://ecommerce-node4.onrender.com/auth/sendcode`,
+        `${import.meta.env.VITE_BURL}/auth/sendcode`,
         { email: value.email }
       );
 
@@ -50,7 +50,7 @@ export default function ForgotPassword() {
     setIsLoading(true);
     try {
       const response = await axios.patch(
-        `https://ecommerce-node4.onrender.com/auth/forgotPassword`,
+        `${import.meta.env.VITE_BURL}/auth/forgotPassword`,
         value
       );
 

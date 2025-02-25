@@ -21,7 +21,7 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const { cartCount, setCartCount } = useContext(CartContext);
   const { data, error, isLoading } = UseFetch(
-    `https://ecommerce-node4.onrender.com/products/${productId}`
+    `${import.meta.env.VITE_BURL}/products/${productId}`
   );
   const loadMoreReviews = () => {
     setVisibleReviews((prev) => prev + 2);
@@ -45,7 +45,7 @@ export default function ProductDetails() {
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        `https://ecommerce-node4.onrender.com/cart`,
+        `${import.meta.env.VITE_BURL}/cart`,
         {
           productId: productId,
         },
@@ -81,7 +81,7 @@ export default function ProductDetails() {
     try {
       const token = localStorage.getItem("userToken");
       await axios.post(
-        `https://ecommerce-node4.onrender.com/products/${productId}/review`,
+        `${import.meta.env.VITE_BURL}/products/${productId}/review`,
         { comment, rating },
         {
           headers: {

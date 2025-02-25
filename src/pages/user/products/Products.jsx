@@ -33,7 +33,7 @@ export default function Products() {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://ecommerce-node4.onrender.com/products?page=1&limit=10&search=${searchText}`
+        `${import.meta.env.VITE_BURL}/products?page=1&limit=10&search=${searchText}`
       );
       setData(response.data.products);
       setError(null);
@@ -54,7 +54,7 @@ export default function Products() {
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        `https://ecommerce-node4.onrender.com/cart`,
+        `${import.meta.env.VITE_BURL}/cart`,
         { productId },
         { headers: { Authorization: `Tariq__${token}` } }
       );

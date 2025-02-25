@@ -22,7 +22,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `https://ecommerce-node4.onrender.com/auth/signin`,
+        `${import.meta.env.VITE_BURL}/auth/signin`,
         value
       );
       if (response.status === 200) {

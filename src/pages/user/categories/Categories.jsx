@@ -8,7 +8,7 @@ import MainVeiw from "../../../components/user/mainVeiw/MainVeiw";
 
 export default function Categories() {
   const { data, error, isLoading } = UseFetch(
-    `https://ecommerce-node4.onrender.com/categories/active`
+    `${import.meta.env.VITE_BURL}/categories/active`
   );
   if (isLoading) {
     return <Loader />;

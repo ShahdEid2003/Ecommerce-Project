@@ -20,7 +20,7 @@ export default function Cart() {
   const getData = async () => {
     try {
       const { data } = await axios.get(
-        `https://ecommerce-node4.onrender.com/cart`,
+        `${import.meta.env.VITE_BURL}/cart`,
         {
           headers: {
             Authorization: `Tariq__${localStorage.getItem("userToken")}`,
@@ -45,7 +45,7 @@ export default function Cart() {
   const increaseQty = async (productId) => {
     const token = localStorage.getItem("userToken");
     const response = await axios.patch(
-      `https://ecommerce-node4.onrender.com/cart/incraseQuantity`,
+      `${import.meta.env.VITE_BURL}/cart/incraseQuantity`,
       {
         productId: productId,
       },
@@ -69,7 +69,7 @@ export default function Cart() {
   const decreasQty = async (productId) => {
     const token = localStorage.getItem("userToken");
     const response = await axios.patch(
-      `https://ecommerce-node4.onrender.com/cart/decraseQuantity`,
+      `${import.meta.env.VITE_BURL}/cart/decraseQuantity`,
       {
         productId: productId,
       },
@@ -93,7 +93,7 @@ export default function Cart() {
     try {
       const token = localStorage.getItem("userToken");
       await axios.patch(
-        `https://ecommerce-node4.onrender.com/cart/removeItem`,
+        `${import.meta.env.VITE_BURL}/cart/removeItem`,
         {
           productId: productId,
         },
@@ -116,7 +116,7 @@ export default function Cart() {
     try {
       const token = localStorage.getItem("userToken");
       await axios.patch(
-        "https://ecommerce-node4.onrender.com/cart/clear",
+        `${import.meta.env.VITE_BURL}/cart/clear`,
         null,
         {
           headers: {

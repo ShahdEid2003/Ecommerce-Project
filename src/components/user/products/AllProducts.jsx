@@ -15,7 +15,7 @@ export default function Products() {
   const { cartCount, setCartCount } = useContext(CartContext);
 
   const { data, error, isLoading } = UseFetch(
-    `https://ecommerce-node4.onrender.com/products?page=1&limit=50`
+    `${import.meta.env.VITE_BURL}/products?page=1&limit=50`
   );
 
   if (isLoading) {
@@ -39,7 +39,7 @@ export default function Products() {
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        `https://ecommerce-node4.onrender.com/cart`,
+        `${import.meta.env.VITE_BURL}/cart`,
         { productId: productId },
         { headers: { Authorization: `Tariq__${token}` } }
       );

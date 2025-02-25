@@ -25,7 +25,7 @@ export default function CreateOrder() {
     setIsLoading(true);
     try {
       const res = await axios.post(
-        `https://ecommerce-node4.onrender.com/order`,
+        `${import.meta.env.VITE_BURL}/order`,
         value,
         {
           headers: {
@@ -49,7 +49,7 @@ export default function CreateOrder() {
     setIsLoading(true);
     try {
       const { data } = await axios.get(
-        `https://ecommerce-node4.onrender.com/cart`,
+        `${import.meta.env.VITE_BURL}/cart`,
         {
           headers: {
             Authorization: `Tariq__${localStorage.getItem("userToken")}`,

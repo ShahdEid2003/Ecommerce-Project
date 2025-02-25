@@ -25,7 +25,7 @@ export default function Register() {
 
     try {
       const response = await axios.post(
-        `https://ecommerce-node4.onrender.com/auth/signup`,
+        `${import.meta.env.VITE_BURL}/auth/signup`,
         value
       );
       if (response.status == 201) {
